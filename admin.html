@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AURA Visual Studio</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+:root{--navy:#001734;--blue:#1769b2;--pale:#eaf4fc;--bg:#f4f7fb;--line:#e2e8f0;--muted:#64748b;--white:#fff;--green:#16845b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font:14px 'Plus Jakarta Sans',sans-serif;color:#182b43}.top{height:66px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 22px;position:sticky;top:0;z-index:5}.brand{display:flex;align-items:center;gap:11px;font-weight:800;color:var(--navy);letter-spacing:.02em}.mark{width:34px;height:34px;border-radius:11px;background:var(--navy);color:white;display:grid;place-items:center;font-size:17px}.brand small{display:block;font-size:10px;color:var(--muted);font-weight:600;letter-spacing:.12em;margin-top:2px}.top-actions{display:flex;gap:8px;align-items:center}.btn{border:1px solid var(--line);background:#fff;color:var(--navy);padding:10px 13px;border-radius:9px;font:600 12px inherit;cursor:pointer}.btn.primary{background:var(--navy);border-color:var(--navy);color:#fff}.btn:disabled{opacity:.45;cursor:not-allowed}.layout{display:grid;grid-template-columns:250px minmax(0,1fr) 300px;gap:14px;padding:14px;min-height:calc(100vh - 66px)}.side,.inspector,.workspace{background:#fff;border:1px solid var(--line);border-radius:14px;min-width:0}.side{padding:18px}.eyebrow{font-size:10px;letter-spacing:.14em;color:var(--muted);font-weight:800;text-transform:uppercase}.side h2{font-size:18px;margin:7px 0 5px;color:var(--navy)}.side p{font-size:12px;line-height:1.6;color:var(--muted);margin:0 0 20px}.step{display:flex;gap:10px;padding:11px 0;border-bottom:1px solid #f0f3f7}.num{width:25px;height:25px;flex:none;border-radius:8px;background:var(--pale);color:var(--blue);display:grid;place-items:center;font-size:11px;font-weight:800}.step b{font-size:12px;display:block}.step span{font-size:11px;color:var(--muted);line-height:1.5;display:block;margin-top:3px}.tip{margin-top:18px;padding:12px;border-radius:10px;background:#f5f9ff;color:#45617e;font-size:11px;line-height:1.6}.workspace{display:flex;flex-direction:column;overflow:hidden}.workbar{height:52px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 14px;gap:8px}.workbar strong{font-size:12px}.workbar span{font-size:11px;color:var(--muted)}.devices{display:flex;gap:5px}.devices button{border:1px solid var(--line);background:#fff;border-radius:7px;padding:6px 9px;font-size:11px;cursor:pointer}.devices button.active{background:var(--pale);border-color:#b9d9f4;color:var(--blue)}.preview-wrap{background:#e9eef5;flex:1;min-height:650px;padding:18px;display:flex;justify-content:center;overflow:auto}.preview-frame{width:100%;height:100%;min-height:650px;border:0;background:#fff;border-radius:7px;box-shadow:0 8px 30px #00173418;transition:width .2s}.preview-frame.mobile{width:390px;flex:none}.inspector{padding:18px;display:flex;flex-direction:column;gap:14px}.inspector h3{font-size:16px;color:var(--navy);margin:5px 0 0}.muted{color:var(--muted);font-size:11px;line-height:1.5}.field{display:flex;flex-direction:column;gap:6px}.field label{font-size:11px;font-weight:700;color:#43566e}.field input,.field textarea{width:100%;border:1px solid var(--line);border-radius:8px;padding:10px;font:12px inherit;color:#182b43;background:#fff;outline:none}.field textarea{min-height:110px;resize:vertical;line-height:1.5}.field input:focus,.field textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px #1769b21a}.empty{border:1px dashed #cbd5e1;border-radius:10px;padding:18px;text-align:center;color:var(--muted);font-size:12px;line-height:1.6}.tag{display:inline-flex;background:#eef6ff;color:#1769b2;padding:5px 8px;border-radius:6px;font-size:10px;font-weight:800}.status{font-size:11px;color:var(--green);min-height:16px}.divider{height:1px;background:var(--line)}.danger{color:#a43d3d}.footer-note{font-size:10px;color:var(--muted);line-height:1.6;margin-top:auto}
+@media(max-width:1050px){.layout{grid-template-columns:210px minmax(0,1fr)}.inspector{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.inspector .inspector-head{grid-column:1/-1}}
+@media(max-width:680px){.top{padding:0 12px}.top-actions .btn:not(.primary){display:none}.layout{display:flex;flex-direction:column;padding:8px}.side{order:2}.workspace{order:1}.inspector{order:3;display:flex}.preview-wrap{min-height:560px;padding:8px}.preview-frame{min-height:560px}.brand{font-size:12px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="brand"><div class="mark">A</div><div>AURA VISUAL STUDIO<small>WEBSITE CONTENT EDITOR</small></div></div><div class="top-actions"><button class="btn" id="reload">Muat ulang preview</button><button class="btn primary" id="export">Unduh hasil edit</button></div></header>
+<main class="layout">
+<aside class="side"><div class="eyebrow">Workspace</div><h2>Editor Website</h2><p>Ubah konten website Aura Optikal lewat preview. Pilih elemen di halaman, lalu edit dari panel sebelah kanan.</p>
+<div class="step"><div class="num">1</div><div><b>Pilih elemen</b><span>Klik teks, tombol, atau gambar pada preview website.</span></div></div>
+<div class="step"><div class="num">2</div><div><b>Edit konten</b><span>Ubah teks, tautan, atau alamat gambar pada panel editor.</span></div></div>
+<div class="step"><div class="num">3</div><div><b>Unduh hasil</b><span>Unduh HTML yang sudah diedit untuk diperiksa sebelum diterapkan.</span></div></div>
+<div class="tip"><b>Mode aman:</b> editor ini tidak mengubah website publik atau GitHub secara langsung. Perubahan hanya ada di preview sampai kamu mengunduh dan menerapkannya.</div>
+<div class="tip">Jangan masukkan password, token, atau data pelanggan ke editor ini.</div>
+</aside>
+<section class="workspace"><div class="workbar"><div><strong>Preview website</strong><br><span id="previewState">Memuat index.html…</span></div><div class="devices"><button class="active" id="desktop">Desktop</button><button id="mobile">Mobile</button></div></div><div class="preview-wrap"><iframe class="preview-frame" id="preview" title="Preview website Aura Optikal" src="index.html"></iframe></div></section>
+<aside class="inspector"><div class="inspector-head"><div class="eyebrow">Properties</div><h3>Panel Editor</h3><p class="muted">Pilih elemen pada preview untuk mulai mengedit.</p></div>
+<div id="empty" class="empty">Belum ada elemen dipilih.<br>Klik salah satu teks atau gambar di preview.</div>
+<div id="editor" hidden>
+<div><span class="tag" id="kind">TEKS</span><div class="muted" id="selector" style="margin-top:7px;word-break:break-all"></div></div>
+<div class="field" id="textField"><label for="textValue">Isi teks</label><textarea id="textValue"></textarea></div>
+<div class="field" id="srcField" hidden><label for="srcValue">Alamat gambar (URL)</label><input id="srcValue" placeholder="https://…"></div>
+<div class="field" id="linkField" hidden><label for="linkValue">Alamat tautan</label><input id="linkValue" placeholder="https://… atau #bagian"></div>
+<div class="field" id="altField" hidden><label for="altValue">Deskripsi gambar (alt)</label><input id="altValue"></div>
+<div class="field"><label for="imageUpload">Atau unggah gambar pengganti</label><input id="imageUpload" type="file" accept="image/*"></div>
+<div class="divider"></div><button class="btn" id="undo">Batalkan perubahan terakhir</button><div class="status" id="status"></div>
+</div>
+<div class="footer-note">AURA OPTIKAL · SULTAN ADAM, BANJARMASIN<br>Editor eksperimen pada branch dev-aura.</div>
+</aside>
+</main>
+<script>
+const frame=document.getElementById('preview'),empty=document.getElementById('empty'),editor=document.getElementById('editor');
+const textValue=document.getElementById('textValue'),srcValue=document.getElementById('srcValue'),linkValue=document.getElementById('linkValue'),altValue=document.getElementById('altValue');
+let selected=null,history=[],dirty=false;
+function say(s){document.getElementById('status').textContent=s}
+function installPicker(){
+ const d=frame.contentDocument;if(!d||!d.body)return;
+ d.addEventListener('click',e=>{
+  const el=e.target.closest('img,a,button,h1,h2,h3,p,span,li');if(!el)return;
+  if(el.closest('header')&&el.tagName==='A'&&el.getAttribute('href')?.startsWith('http'))e.preventDefault();
+  e.preventDefault();e.stopPropagation();selectElement(el);
+ },true);
+ d.addEventListener('mouseover',e=>{const el=e.target.closest('img,a,button,h1,h2,h3,p,span,li');if(el&&el!==selected){el.dataset.auraHover=el.style.outline;el.style.outline='2px dashed #2584d8';}},true);
+ d.addEventListener('mouseout',e=>{const el=e.target.closest('img,a,button,h1,h2,h3,p,span,li');if(el&&el!==selected)el.style.outline=el.dataset.auraHover||''},true);
+ document.getElementById('previewState').textContent='Siap · klik elemen untuk memilih';
+}
+function selectElement(el){
+ if(selected)selected.style.outline=selected.dataset.auraSelectedOutline||'';
+ selected=el;history.push({el,html:el.innerHTML,src:el.getAttribute('src'),href:el.getAttribute('href'),alt:el.getAttribute('alt')});
+ el.dataset.auraSelectedOutline=el.style.outline;el.style.outline='2px solid #1769b2';
+ empty.hidden=true;editor.hidden=false;
+ const isImg=el.tagName==='IMG',isLink=el.tagName==='A'||el.tagName==='BUTTON';
+ document.getElementById('kind').textContent=isImg?'GAMBAR':isLink?'TAUTAN / TOMBOL':'TEKS';
+ document.getElementById('selector').textContent=el.tagName.toLowerCase()+(el.id?'#'+el.id:'')+(el.classList.length?'.'+[...el.classList].slice(0,2).join('.'):'');
+ document.getElementById('textField').hidden=isImg;
+ document.getElementById('srcField').hidden=!isImg;
+ document.getElementById('altField').hidden=!isImg;
+ document.getElementById('linkField').hidden=!isLink;
+ textValue.value=el.innerText||'';srcValue.value=isImg?el.getAttribute('src')||'':'';altValue.value=isImg?el.getAttribute('alt')||'':'';
+ linkValue.value=isLink?el.getAttribute('href')||'':'';
+ say('Elemen dipilih. Perubahan tampil langsung di preview.');
+}
+textValue.addEventListener('input',()=>{if(selected){selected.innerText=textValue.value;dirty=true}});
+srcValue.addEventListener('change',()=>{if(selected?.tagName==='IMG'){selected.src=srcValue.value;dirty=true}});
+altValue.addEventListener('input',()=>{if(selected?.tagName==='IMG'){selected.alt=altValue.value;dirty=true}});
+linkValue.addEventListener('change',()=>{if(selected){selected.setAttribute('href',linkValue.value);dirty=true}});
+document.getElementById('imageUpload').addEventListener('change',e=>{
+ const file=e.target.files[0];if(!file||!selected||selected.tagName!=='IMG')return;
+ const reader=new FileReader();reader.onload=()=>{selected.src=reader.result;srcValue.value='(gambar tertanam di HTML)';dirty=true;say('Gambar diganti untuk preview. Unduh HTML untuk menyimpan hasilnya.')};reader.readAsDataURL(file);
+});
+document.getElementById('undo').addEventListener('click',()=>{const h=history.pop();if(!h)return;h.el.innerHTML=h.html;if(h.src===null)h.el.removeAttribute('src');else if(h.src!==undefined)h.el.setAttribute('src',h.src);if(h.href===null)h.el.removeAttribute('href');else if(h.href!==undefined)h.el.setAttribute('href',h.href);if(h.alt===null)h.el.removeAttribute('alt');else if(h.alt!==undefined)h.el.setAttribute('alt',h.alt);selected=null;editor.hidden=true;empty.hidden=false;say('Perubahan terakhir dibatalkan.')});
+document.getElementById('desktop').onclick=()=>{frame.classList.remove('mobile');document.getElementById('desktop').classList.add('active');document.getElementById('mobile').classList.remove('active')};
+document.getElementById('mobile').onclick=()=>{frame.classList.add('mobile');document.getElementById('mobile').classList.add('active');document.getElementById('desktop').classList.remove('active')};
+document.getElementById('reload').onclick=()=>{if(dirty&&!confirm('Muat ulang preview? Perubahan yang belum diunduh akan hilang.'))return;frame.src='index.html';selected=null;dirty=false;editor.hidden=true;empty.hidden=false};
+frame.addEventListener('load',installPicker);
+document.getElementById('export').onclick=()=>{
+ try{const doc=frame.contentDocument;const html='<!DOCTYPE html>\n'+doc.documentElement.outerHTML;const blob=new Blob([html],{type:'text/html;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='index-aura hasil edit.html';a.click();URL.revokeObjectURL(url);say('HTML berhasil diunduh. Periksa dahulu sebelum mengganti file website.')}
+ catch(e){alert('Tidak dapat mengunduh preview. Pastikan editor dibuka dari domain yang sama dengan website.')}
+};
+</script>
+</body></html>
